@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
      
      
      double *in=new double[2];
-     FILE *weights;
+         FILE *weights;
      
      weights=fopen("weights.txt","r");
      
@@ -37,14 +37,9 @@ int main(int argc, char** argv) {
     fscanf(weights, "%lf",in[i++]); 
     printf("%lf",in[i-1]);
         }
-    fclose(weights);
+    fclose(weights);       
      
-     
-     
-    
-    
-     
-     Perc->setWeights(in);
+    Perc->setWeights(in);
     
     delete[]in;
     delete[] Perc;
