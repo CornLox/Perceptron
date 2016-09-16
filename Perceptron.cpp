@@ -27,27 +27,34 @@ Perceptron::Perceptron(double bias){
     Link *temp=new Link;
     temp->unit=0;
     temp->input=1;
-    temp->weight=-bias;        
+    temp->weight=bias;        
    this->Links.push_back(*temp); 
    delete[] temp;
 }
 
 void Perceptron::setBiaslink(double bias){
-    this->Links[0].weight=-bias;
+    this->Links[0].weight=bias;
+    this->Links[0].unit=0;
+    this->Links[0].input=1;
 }
 
 void Perceptron::setWeights(double weights[]){
-    for (unsigned int i=0;i<Links.size();i++){
-        this->Links[i].weight=weights[i];
+    for (unsigned int i=1;i<Links.size();i++){
+        this->Links[i].weight=weights[i-1];
+    }
+}
+
+void Perceptron::setUnits(int units[]){
+    for (unsigned int i=1;i<Links.size();i++){
+        this->Links[i].unit=units[i-1];
     }
 }
 
 void Perceptron::setInputs(double inputs[]){
     
     for (unsigned int i=1;i<Links.size();i++){
-        this->Links[i].input=inputs[i];
-    }
-    
+        this->Links[i].input=inputs[i-1];
+    }    
 }
 
 void Perceptron:: calculateOutput(){
