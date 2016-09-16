@@ -15,7 +15,7 @@
 #include<vector>
 #include "Perceptron.h"
 #include <new>
-#include <fstream>
+#include <stdio.h>
 
 using namespace std;
 
@@ -26,12 +26,23 @@ int main(int argc, char** argv) {
     
      Perceptron *Perc=new Perceptron(2.0);
      
-     ofstream weights;
-     
      
      double *in=new double[2];
-     in[0]=0.0;
-     in[1]=0.0;
+     FILE *weights;
+     
+     weights=fopen("weights.txt","r");
+     
+     while(!feof(weights)){
+         int i=0;
+    fscanf(weights, "%lf",in[i++]); 
+    printf("%lf",in[i-1]);
+        }
+    fclose(weights);
+     
+     
+     
+    
+    
      
      Perc->setWeights(in);
     
