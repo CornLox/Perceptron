@@ -15,6 +15,7 @@
 #define PERCEPTRON_H
 
 
+
 class Perceptron {
 public:
     Perceptron();
@@ -22,7 +23,8 @@ public:
     virtual ~Perceptron();
     Perceptron(double);  //constructor with bias
     void setBiaslink(double);
-    void setWeights(double*);
+    void setWeights();
+    void setUnits(int*);
     void setInputs(double*);
     void calculateOutput();
     double getOutput();
