@@ -11,11 +11,10 @@
  * Created on 27 August 2016, 10:44
  */
 
-#include <vector>
-#include<fstream>
 #include <iostream>
+#include<vector>
 #include "Perceptron.h"
-
+#include<fstream>
 
 Perceptron::Perceptron() {
 }
@@ -43,7 +42,7 @@ void Perceptron::setBiaslink(double bias){
 
 void Perceptron::setWeights(){
     
-    ifstream weights;   
+    ifstream weights; 
      weights.open("weights.txt",std::ifstream::in); 
     while(weights.good()){
          int i=1;
@@ -54,10 +53,16 @@ void Perceptron::setWeights(){
     weights.close();  
 }
 
-void Perceptron::setUnits(int units[]){
-    for (unsigned int i=1;i<=this->Links.size();i++){
-        this->Links[i].unit=units[i-1];
-    }
+void Perceptron::setUnits(){
+    ifstream units; 
+     units.open("units.txt",std::ifstream::in); 
+    while(units.good()){
+         int i=1;
+    units >> this->Links[i].unit; 
+    cout << this->Links[i].unit << "\n"<< endl;
+    i++;
+        }
+    units.close();
 }
 
 void Perceptron::setInputs(double inputs[]){
