@@ -12,7 +12,10 @@
  */
 
 #include <vector>
+#include<fstream>
+#include <iostream>
 #include "Perceptron.h"
+
 
 Perceptron::Perceptron() {
 }
@@ -38,14 +41,21 @@ void Perceptron::setBiaslink(double bias){
     this->Links[0].input=1;
 }
 
-void Perceptron::setWeights(double weights[]){
-    for (unsigned int i=1;i<Links.size();i++){
-        this->Links[i].weight=weights[i-1];
-    }
+void Perceptron::setWeights(){
+    
+    ifstream weights;   
+     weights.open("weights.txt",std::ifstream::in); 
+    while(weights.good()){
+         int i=1;
+    weights >> this->Links[i].weight; 
+    cout << this->Links[i].weight << "\n"<< endl;
+    i++;
+        }
+    weights.close();  
 }
 
 void Perceptron::setUnits(int units[]){
-    for (unsigned int i=1;i<Links.size();i++){
+    for (unsigned int i=1;i<=this->Links.size();i++){
         this->Links[i].unit=units[i-1];
     }
 }
